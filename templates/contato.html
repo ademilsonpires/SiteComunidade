@@ -3,8 +3,13 @@
 {% block body %}
 
 <div>
-<h3>Precisou de Ajuda?</h3>
-<p>Entre em contato: </p>
+    <h3>Precisou de Ajuda em?</h3>
+    <p>Entre em contato: </p>
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping">@</span>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+               aria-describedby="addon-wrapping">
+    </div>
 
 </div>
 {% endblock %}
