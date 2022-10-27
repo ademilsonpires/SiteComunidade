@@ -27,11 +27,11 @@ def login():
     form_criarconta = FormCriarConta()
     if form_login.validate_on_submit() and 'botao_submit_login' in request.form:
         # fez login com sucesso
-        flash(f'Login feito com sucesso:{form_login.email.data}')
+        flash(f'Login feito com sucesso: {form_login.email.data}','alert-success')
         return redirect(url_for('home'))
     if form_criarconta.validate_on_submit() and 'botao_submit_criar_conta' in request.form:
         # criar conta com sucesso
-        flash(f'Conta criada com sucesso para o email {form_criarconta.email.data}')
+        flash(f'Conta criada com sucesso para o email: {form_criarconta.email.data}', 'alert-success')
         return redirect(url_for('home'))
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
 if __name__ == '__main__':

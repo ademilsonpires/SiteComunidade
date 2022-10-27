@@ -14,7 +14,19 @@
 
 </head>
 <body>
-{% include  'navbar.html' %}
+    {% include  'navbar.html' %}
+<!----Alerta de mensagem flash--->
+    <div class="container">
+    {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% if mensagens %}
+            {% for categoria, mensagem in mensagens%}
+                <div class="alert {{ categoria }}">
+                    {{mensagem}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>;;;
 
     {% block body %}
     {% endblock %}
