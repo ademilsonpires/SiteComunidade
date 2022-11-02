@@ -6,8 +6,8 @@ class Usuario(database.Model):
     username = database.Column(database.String, nullable=False)
     email = database.Column(database.String, nullable=False, unique=True)
     senha = database.Column(database.String, nullable=False)
-    foto_perfil = database.Column(database.String, default='default.jpg', nullable=False)
-    posts = database.relationship('post', backref='autor', lazy=True)
+    foto_perfil = database.Column(database.String, default='default.jpg')
+    posts = database.relationship('Post', backref='autor', lazy=True)
     cursos = database.Column(database.String, nullable=False, default='Não Informado')
 
 class Post(database.Model):
