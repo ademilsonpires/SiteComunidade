@@ -1,4 +1,4 @@
-from main import database
+from comunidadeblogdopython import database
 from datetime import datetime
 
 class Usuario(database.Model):
