@@ -1,7 +1,7 @@
-from comunidadeblogdopython import database
-from comunidadeblogdopython import app
-with app.app_context():
-     database.create_all()
+# from comunidadeblogdopython import database
+# from comunidadeblogdopython import app
+# with app.app_context():
+#      database.create_all()
 
 
 
