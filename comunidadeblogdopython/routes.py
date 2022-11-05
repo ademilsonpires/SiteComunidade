@@ -1,6 +1,7 @@
 from flask import render_template,request,  redirect, url_for, flash
 from comunidadeblogdopython import app
 from comunidadeblogdopython.forms import FormLogin, FormCriarConta
+from comunidadeblogdopython.models import Usuario
 
 lista_usuarios = {'Ademilson', 'Elayne', 'Kerolayne'}  # lista de teste
 
@@ -28,7 +29,11 @@ def login():
         flash(f'Login feito com sucesso: {form_login.email.data}','alert-success')
         return redirect(url_for('home'))
     if form_criarconta.validate_on_submit() and 'botao_submit_criar_conta' in request.form:
-        # criar conta com sucesso
+        # criar conta
+        usuario = Usuario(username=form_criarconta.username.data, email=form_criarconta.email.data, senha=form_criarconta.senha.data)
+        # adicionar a sessão
+        #commit da sessao
+
         flash(f'Conta criada com sucesso para o email: {form_criarconta.email.data}', 'alert-success')
         return redirect(url_for('home'))
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
