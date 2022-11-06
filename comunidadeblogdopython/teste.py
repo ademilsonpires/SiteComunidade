@@ -1,5 +1,7 @@
-# from comunidadeblogdopython import database
-# from comunidadeblogdopython import app
+from comunidadeblogdopython import database
+from comunidadeblogdopython import app
+from comunidadeblogdopython.models import Usuario
+
 # with app.app_context():
 #      database.create_all()
 
@@ -20,9 +22,18 @@
 #     database.session.commit()
 
 # with app.app_context():
-#     meus_teste = Usuario.query.filter_by(id=2).first()
+#     meus_teste = Usuario.query.filter_by(id=3).first()
 #     print(meus_teste)
 #     print(meus_teste.username)
+#     print(meus_teste.email)
+#     print(meus_teste.senha)
+with app.app_context():
+    meus_teste = Usuario.query.all()
+    print(meus_teste)
+
+
+
+
 
 # with app.app_context():
 #     meus_post = Post.query.filter_by(id_usuario=1).first()
