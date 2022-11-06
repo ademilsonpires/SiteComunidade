@@ -1,8 +1,9 @@
-from comunidadeblogdopython import database
-from comunidadeblogdopython import app
-from comunidadeblogdopython.models import Usuario
-
+# from comunidadeblogdopython import database
+# from comunidadeblogdopython import app
+# from comunidadeblogdopython.models import Usuario
+#
 # with app.app_context():
+#      database.drop_all()
 #      database.create_all()
 
 
@@ -27,9 +28,9 @@ from comunidadeblogdopython.models import Usuario
 #     print(meus_teste.username)
 #     print(meus_teste.email)
 #     print(meus_teste.senha)
-with app.app_context():
-    meus_teste = Usuario.query.all()
-    print(meus_teste)
+# with app.app_context():
+#     meus_teste = Usuario.query.all()
+#     print(meus_teste)
 
 
 
