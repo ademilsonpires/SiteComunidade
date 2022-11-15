@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, length, Email, EqualTo, ValidationError
 from comunidadeblogdopython.models import Usuario
+
 class FormCriarConta(FlaskForm):
     username = StringField('Nome de Usuário', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
