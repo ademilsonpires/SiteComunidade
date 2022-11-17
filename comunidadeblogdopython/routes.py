@@ -32,6 +32,12 @@ def login():
             login_user(usuario, remember=form_login.lembrar_dados.data)
             # fez login com sucesso
             flash(f'Login feito com sucesso: {form_login.email.data}','alert-success')
+            par_next = request.args.get('next')
+            if par_next:
+                return redirect(par_next)
+            else:
+                return redirect('home')
+            return redirect(url_for('home'))
             return redirect(url_for('home'))
         else:
             flash('Falha no Login, E-mail ou senha incorretos', 'alert-danger')
@@ -44,7 +50,7 @@ def login():
         #commit da sessao
 
         flash(f'Conta criada com sucesso para o email: {form_criarconta.email.data}', 'alert-success')
-        return redirect(url_for('home'))
+
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
 
 @app.route('/sair')
