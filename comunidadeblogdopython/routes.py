@@ -2,7 +2,7 @@ from flask import render_template,request,  redirect, url_for, flash
 from comunidadeblogdopython import app, database, bcrypt
 from comunidadeblogdopython.forms import FormLogin, FormCriarConta
 from comunidadeblogdopython.models import Usuario
-from flask_login import login_user
+from flask_login import login_user, logout_user, current_user
 
 lista_usuarios = {'Ademilson', 'Elayne', 'Kerolayne'}  # lista de teste
 
@@ -45,3 +45,24 @@ def login():
         flash(f'Conta criada com sucesso para o email: {form_criarconta.email.data}', 'alert-success')
         return redirect(url_for('home'))
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
+
+@app.route('/sair')
+def sair():
+    logout_user()
+    flash('Logout feito com sucesso', 'alert-success')
+    return redirect(url_for('home'))
+
+
+
+@app.route('/perfil')
+def perfil():
+    return render_template('perfil.html')
+
+
+
+@app.route('/post/criar')
+def criar_post():
+    return render_template('criarpost.html')
+
+
+
