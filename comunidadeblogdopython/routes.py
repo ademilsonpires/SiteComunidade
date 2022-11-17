@@ -2,7 +2,7 @@ from flask import render_template,request,  redirect, url_for, flash
 from comunidadeblogdopython import app, database, bcrypt
 from comunidadeblogdopython.forms import FormLogin, FormCriarConta
 from comunidadeblogdopython.models import Usuario
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 
 lista_usuarios = {'Ademilson', 'Elayne', 'Kerolayne'}  # lista de teste
 
@@ -18,6 +18,7 @@ def contato():
 
 
 @app.route('/listagem-usuarios')
+@login_required
 def usuarios():
     return render_template('usuarios.html', lista_usuarios=lista_usuarios)
 
@@ -47,6 +48,7 @@ def login():
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
 
 @app.route('/sair')
+@login_required
 def sair():
     logout_user()
     flash('Logout feito com sucesso', 'alert-success')
@@ -55,12 +57,14 @@ def sair():
 
 
 @app.route('/perfil')
+@login_required
 def perfil():
     return render_template('perfil.html')
 
 
 
 @app.route('/post/criar')
+@login_required
 def criar_post():
     return render_template('criarpost.html')
 
