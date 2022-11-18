@@ -36,9 +36,9 @@ def login():
             if par_next:
                 return redirect(par_next)
             else:
-                return redirect('home')
-            return redirect(url_for('home'))
-            return redirect(url_for('home'))
+                return redirect(url_for('home'))
+            #return redirect(url_for('home'))
+
         else:
             flash('Falha no Login, E-mail ou senha incorretos', 'alert-danger')
     if form_criarconta.validate_on_submit() and 'botao_submit_criar_conta' in request.form:
@@ -65,7 +65,8 @@ def sair():
 @app.route('/perfil')
 @login_required
 def perfil():
-    return render_template('perfil.html')
+    foto_perfil = url_for('static', filename = 'fotos_perfil/{}'.format(current_user.foto_perfil))
+    return render_template('perfil.html', foto_perfil=foto_perfil)
 
 
 
